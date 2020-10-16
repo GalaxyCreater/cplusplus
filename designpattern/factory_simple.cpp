@@ -1,5 +1,5 @@
 /*
-
+简单工厂
 */
 #include <memory>
 #include <stdio.h>

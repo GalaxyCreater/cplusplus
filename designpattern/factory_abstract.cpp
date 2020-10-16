@@ -2,10 +2,6 @@
 抽象工厂
 */
 
-/*
-工厂方法: 更加不同类型,创建不同工厂,再用对应的工厂,创建对应的对象
-*/
-
 #include <memory>
 #include <stdio.h>
 #include <iostream>
