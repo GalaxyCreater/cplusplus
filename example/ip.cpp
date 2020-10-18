@@ -24,6 +24,7 @@ bool CheckValid(string &s)
 }
 
 /*
+打印所有合法ip
 调用:PrintIp("1921681199")
 */
 void PrintIp(string &s)
