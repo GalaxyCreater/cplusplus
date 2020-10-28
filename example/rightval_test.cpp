@@ -19,14 +19,7 @@ private:
 
 public:
     Base(/* args */);
-    // 提供移动构造函数的同时也会提供一个拷贝构造函数，以防止移动不成功的时候还能拷贝构造，使我们的代码更安全
     Base(const Base &b);
-    // 移动构造函数,加上移动构造函数后,就不需要用右值引用了: Base &&b = Ret();
-    // Base(Base &&b) : m_int(b.m_int)
-    // {
-    //     b.m_int = nullptr;
-    //     cout << "move construct" << endl;
-    // }
     ~Base();
 };
 
@@ -56,7 +49,7 @@ int Base::moveConstruct = 0;
 Base &&b=Ret();
 输出:
 construct Base 1
-copy count: 1
+copy count: 1     少了一次复制构造是因为b为Ret()返回的临时对象的右值引用,创建了临时对象后没再创建新对象
 delete Base 1
 delete Base 2
 
@@ -94,7 +87,7 @@ void processValue(int &&a) { cout << "rvalue" << endl; }
 template <typename T>
 void forwardValue(T &&val)
 {
-    processValue(std::forward<T>(val)); //照参数本来的类型进行转发。
+    processValue(std::forward<T>(val)); // 照参数本来的类型进行转发。
 }
 
 void Testdelcl()
@@ -109,7 +102,7 @@ int main()
     //c++98这样的写法const Base &b = Ret();和右值引用效果一致
     Base &&b = Ret();
 
-    Testdelcl();
+    //Testdelcl();
 
     return 0;
 }

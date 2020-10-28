@@ -30,6 +30,12 @@ public:
         cout << "move construct" << endl;
     }
     ~Base();
+
+    Base &operator=(const Base b)
+    {
+        cout << "operator = " << endl;
+        return *this;
+    }
 };
 
 Base::Base(const Base &b)
